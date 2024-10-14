@@ -24,7 +24,7 @@ theme: /
         a: Сегодня прохладно !
 
 
-theme : /CatchAll  
+theme : CatchAll  
     state: NoMatch
         event!: noMatch
    random :  
