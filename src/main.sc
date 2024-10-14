@@ -11,7 +11,7 @@ theme: /
         intent!: /привет
         q!: * $hello *
         a: Привет
-
+        
     state: Bye
         intent!: /пока
         a: Пока пока
