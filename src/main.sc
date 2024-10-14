@@ -21,3 +21,7 @@ theme: /
     state: Match
         event!: match
         a: {{$context.intent.answer}}
+
+    state: Weather
+        intent!: /какая сегодня погода ?
+        a: Сегодня прохладно !
