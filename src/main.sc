@@ -4,6 +4,7 @@ theme: /
 
     state: Start
         q!: $regex</start>
+        q!: *$hello*
         a: Начнём.
 
     state: Hello
