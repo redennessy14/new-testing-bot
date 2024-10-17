@@ -7,12 +7,17 @@ theme: /TravelRequest
             go!:/AskNumberOfPeople
         else:
             a:Подскажите, вы уже определились с страной прибытия?
-            state:Agree
+        state:Agree
                 if:($session.country)
                     a:Отлично, я передам консультанту, что местом пребывания станет {{ $session.country }}. А теперь давайте перейдем к указанию оставшихся параметров.
                     go!:/AskNumberOfPeople
                 else:
                     a:Введите название страны.
-                    state:Country
+                state:Country
                         a:Отлично, я передам консультанту, что местом пребывания станет {{ $session.country }}. А теперь давайте перейдем к указанию оставшихся параметров.
                         go!:/AskNumberOfPeople
+        state:Disagree
+            a:Понял вас. В таком случае, когда консультант получит заявку, он подберет варианты стран для вас. А теперь давайте перейдем к указанию оставшихся параметров.
+            go!: /AskNumberOfPeople
+        state:CatchAll
+            
