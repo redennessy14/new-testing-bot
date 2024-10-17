@@ -14,6 +14,20 @@ theme: /
     #     a: Пока пока
 
 
+    state:DontHaveQuestions
+        random:
+            a:- Вас понял!
+            a:- Хорошо!
+            a:- Понял!
+        go!:/GoodBye
+    state:GoodBye
+        random:
+            a:- Всего доброго!
+            a:- Всего вам доброго!
+            a:- Всего доброго, до свидания!
+
+        
+        
     state: Match
         event!: match
         a: {{$context.intent.answer}}
