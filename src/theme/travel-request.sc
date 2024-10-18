@@ -8,6 +8,7 @@ theme: /TravelRequest
         else:
             a:Подскажите, вы уже определились с страной прибытия?
         state:Agree
+          
                 if:($session.country)
                     a:Отлично, я передам консультанту, что местом пребывания станет {{ $session.country }}. А теперь давайте перейдем к указанию оставшихся параметров.
                     go!:/AskNumberOfPeople
