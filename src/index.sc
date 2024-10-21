@@ -4,3 +4,5 @@ require:theme/weather.sc
 require:theme/booking.sc
 require:theme/travel-request.sc
 require:theme/ask-number-of-people.sc
+require:theme/ask-name.sc
+require:theme/ask-phone.sc
