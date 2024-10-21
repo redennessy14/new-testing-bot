@@ -45,7 +45,7 @@ theme: /
         event!: match
         a: {{$context.intent.answer}}
         
-    state: NoMatch
+    state: NoMatch 
         event!: noMatch
         random:  
          a: Извините я вас не понял  , не могли ли вы уточнить вопрос ? 
