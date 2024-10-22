@@ -2,7 +2,7 @@ require: slotfilling/slotFilling.sc
   module = sys.zb-common
 require:index.sc
 
-theme: /
+theme: /GeneralStates
 
     # state: Hello
     #     intent!: /привет
@@ -14,14 +14,7 @@ theme: /
     #     a: Пока пока
 
 
-    state:DontHaveQuestions
-        random:
-            a:- Вас понял!
-            a:- Хорошо!
-            a:- Понял!
-        go!:/GoodBye
-        
-    state:GoodBye
+    state:Goodbye
         random:
             a:- Всего доброго!
             a:- Всего вам доброго!

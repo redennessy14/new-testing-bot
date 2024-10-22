@@ -8,13 +8,23 @@ theme: /AskService
            "👑 VIP"
            
            
-        state:Package
+    state:Package
+        q!:* ($economy/$standart/$vip) *
+       
+        script: 
+            $session.services = getPackage($parseTree)
+        go!:/AskName/
+      
             
-            q!:* ($economy/$standart/$vip) *
-            script: 
-                $session.services = "эконом"
-            a:ващ {{$session.services}} 
-                   
+    state:WhatIsIncluded
+        # q!:* ($economy/$standart/$vip) *
+        a:Ру
+        if:($session.service)
+            a:В пакет услуг "{{$session.services}}" входят следующие опции: [Входящие в него услуги - 1], [Входящие в него услуги - 2], ... [Входящие в него услуги - N].
+            
+    state:Price
+        
+            
                    
     state:CatchAll ||noContext = true
         

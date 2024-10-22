@@ -13,3 +13,5 @@ require:theme/ask-phone.sc
 require:theme/ask-service.sc
 
 #Scripts
+
+require:scripts/get-package.js
