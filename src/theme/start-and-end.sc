@@ -39,8 +39,7 @@ theme: /StartAndEnd
             event: noMatch
             script:
                 $session.stateCounterInARow += 1
-            a: счетчик{{ $temp.stateCounterInARow }}
-            if:$session.stateCounterInARow < 3)
+            if:$session.stateCounterInARow < 3
                 random: 
                     a: Извините, не совсем понял. Пожалуйста, подскажите, могу ли я чем-то вам помочь?
                     a: К сожалению, не смог понять, что вы имеете в виду. Подскажите, что вас интересует?
