@@ -6,6 +6,15 @@ theme: /AskService
            "🏷️ Эконом"
            "🏨 Стандарт"
            "👑 VIP"
-           state:Package
-               q!:(эконом*/стандарт*/vip)
-               
+           
+           
+        state:Package
+            
+            q!:* ($economy/$standart/$vip) *
+            script: 
+                $session.services = "эконом"
+            a:ващ {{$session.services}} 
+                   
+                   
+    state:CatchAll ||noContext = true
+        
