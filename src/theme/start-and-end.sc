@@ -25,6 +25,8 @@ theme: /StartAndEnd
         go!:/GeneralStates/Goodbye
         
     state: HowCanIHelpYou
+        script:
+            $session.stateCounterInARow = 0
         random:
             a:- Чем могу помочь?
             a:- Что вас интересует?
@@ -36,9 +38,9 @@ theme: /StartAndEnd
         state:CatchAll ||noContext = true
             event: noMatch
             script:
-                $temp.stateCounterInARow += 1
+                $session.stateCounterInARow += 1
             a: счетчик{{ $temp.stateCounterInARow }}
-            if:($temp.stateCounterInARow < 3) 
+            if:$session.stateCounterInARow < 3)
                 random: 
                     a: Извините, не совсем понял. Пожалуйста, подскажите, могу ли я чем-то вам помочь?
                     a: К сожалению, не смог понять, что вы имеете в виду. Подскажите, что вас интересует?
