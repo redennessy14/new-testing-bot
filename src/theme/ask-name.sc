@@ -6,6 +6,7 @@ require: text/text.sc
 theme: /AskName
     
     state:AskName
+        q!:* (кек) *
         script:
             $session.stateCounterInARow = 0
         if:($client.name)
@@ -26,16 +27,19 @@ theme: /AskName
                     $session.userName = capitalize($parseTree._Text);
                 a:Вас действительно зовут {{$session.userName}} ?
                             
-            state:CatchAll || noContext = true
-                q:noMatch
-                script:
-                    $session.stateCounterInARow += 1
-                if:$session.stateCounterInARow < 2
-                    if:
-                        a:Мне жаль, но без указания вашего имени отправить заявку не получится. Укажите его, пожалуйста.
-                    else:
-                        go!:/AskName/UnusualName
+        state:CatchAll || noContext = true
+            event: noMatch
+            script:
+                $session.stateCounterInARow += 1
+            if:$session.stateCounterInARow < 2
+                if:($request.query == "не знаю")
+                    a:Мне жаль, но без указания вашего имени отправить заявку не получится. Укажите его, пожалуйста.
+                else:
+                    script:
+                        $session.request = $request.query
+                    go!:/AskName/UnusualName
+                
     state:UnusualName
-        a:- Как необычно! Подскажите, вы точно хотели указать в качестве своего имени "{{ $request.query }}"?
+        a:- Как необычно! Подскажите, вы точно хотели указать в качестве своего имени "{{ $session.request }}"?
             
         

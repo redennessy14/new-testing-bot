@@ -11,7 +11,7 @@ theme: /AskNumberOfPeople
             
         state:DontKnow
             
-            go!://AskStartDate/AskStartDate
+            go!:/AskStartDate/AskStartDate
             
         state:CatchAll ||noContext = true
             
