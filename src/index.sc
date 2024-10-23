@@ -11,7 +11,7 @@ require:theme/ask-number-of-people.sc
 require:theme/ask-name.sc
 require:theme/ask-phone.sc
 require:theme/ask-service.sc
+require:theme/weather-forecast.sc
 
 #Scripts
-
 require:scripts/get-package.js

@@ -3,22 +3,6 @@ require: slotfilling/slotFilling.sc
 require:index.sc
 
 theme: /GeneralStates
-
-    # state: Hello
-    #     intent!: /привет
-    #     q!: * $hello *
-    #     a: Привет
-        
-    # state: Bye
-    #     intent!: /пока
-    #     a: Пока пока
-
-
-    state:Goodbye
-        random:
-            a:- Всего доброго!
-            a:- Всего вам доброго!
-            a:- Всего доброго, до свидания!
             
     state:AreYouRobot
         q!:*(кто/робот*/бот*)*

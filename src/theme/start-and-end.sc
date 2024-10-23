@@ -22,7 +22,7 @@ theme: /StartAndEnd
             a:- Вас понял!
             a:- Хорошо!
             a:- Понял!
-        go!:/GeneralStates/Goodbye
+        go!:/StartAndEnd/Goodbye
         
     state: HowCanIHelpYou
         script:
@@ -48,6 +48,8 @@ theme: /StartAndEnd
                 go!:/StartAndEnd/SomethingElse
                 
     state: SomethingElse
+        script:
+            $session.stateCounterInARow = 0
         random:
             a:- Хотите спросить что-то еще?
             a:- Могу ли я помочь чем-то еще?
@@ -55,6 +57,30 @@ theme: /StartAndEnd
         buttons:
             "🌤️ Узнать прогноз погоды"
             "📝 Оформить заявку на подбор тура" 
+        state:
+            q!:* (~да) *
+            go!:/StartAndEnd/HowCanIHelpYou
+        state:
+            q!:* (~нет) *
+            go!:/StartAndEnd/DontHaveQuestions
             
         state:CatchAll || noContext = true
+            event: noMatch
+            script:
+                $session.stateCounterInARow += 1
+            if:$session.stateCounterInARow < 3
+                random:
+                    a:Извините, не совсем понял. Пожалуйста, подскажите, могу ли я еще чем-то помочь?
+                    a:К сожалению, не смог понять, что вы имеете в виду. Подскажите, остались ли у вас еще вопросы?
+                buttons:
+                    "🌤️ Узнать прогноз погоды"
+                    "📝 Оформить заявку на подбор тура" 
+            else:
+                a:Простите, так и не смог понять, что вы имели в виду.
+                go!:/StartAndEnd/Goodbye
             
+    state:Goodbye
+        random:
+            a:- Всего доброго!
+            a:- Всего вам доброго!
+            a:- Всего доброго, до свидания!

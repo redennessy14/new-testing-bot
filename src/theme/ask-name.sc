@@ -11,12 +11,13 @@ theme: /AskName
             a:Введите, пожалуйста, ваше имя.
     
     state:Name 
-        q!: * @pymorphy.name *
-        script: $session.name = capitalize($parseTree["_pymorphy.name"])
+        q!: * @pymorphy.name | меня зовут $Name  *
+        script: 
+            $session.name = capitalize($parseTree["_pymorphy.name"]) |  $session.userName = $parseTree._Name.name;
         if:($session.name)
             a: {{$session.name}} привет
         else:
-            a:Вас действительно зовут {{capitalize($parseTree["_pymorphy.name"])}} ?
+            a:Вас действительно зовут {{$session.userName}} ?
        
     state:CatchAll || noContext = true
         
