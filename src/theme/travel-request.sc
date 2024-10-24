@@ -1,3 +1,6 @@
+require: city/city.sc
+    module = sys.zb-common
+    
 theme: /TravelRequest
     state:TravelRequest
         random:
@@ -7,18 +10,24 @@ theme: /TravelRequest
             go!:/AskNumberOfPeople
         else:
             a:Подскажите, вы уже определились с страной прибытия?
+            
         state:Agree
-          
-                if:($session.country)
-                    a:Отлично, я передам консультанту, что местом пребывания станет {{ $session.country }}. А теперь давайте перейдем к указанию оставшихся параметров.
-                    go!:/AskNumberOfPeople
+            
+            if:($session.country)
+                q:* да *
+                a:Отлично, я передам консультанту, что местом пребывания станет {{ $session.country }}. А теперь давайте перейдем к указанию оставшихся параметров.
+                go!:/AskNumberOfPeople
                 else:
                     a:Введите название страны.
                 state:Country
-                        a:Отлично, я передам консультанту, что местом пребывания станет {{ $session.country }}. А теперь давайте перейдем к указанию оставшихся параметров.
-                        go!:/AskNumberOfPeople
+                    q!:$City
+                    script:
+                        $session.country = $parseTree._City.name;
+                    a:Отлично, я передам консультанту, что местом пребывания станет {{ $session.country }}. А теперь давайте перейдем к указанию оставшихся параметров.
+                    go!:/AskNumberOfPeople
         state:Disagree
             a:Понял вас. В таком случае, когда консультант получит заявку, он подберет варианты стран для вас. А теперь давайте перейдем к указанию оставшихся параметров.
             go!: /AskNumberOfPeople
+            
         state:CatchAll
             
