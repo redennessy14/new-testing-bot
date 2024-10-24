@@ -101,11 +101,85 @@ theme: /TravelRequest
         a:Еще мне потребуется предполагаемая дата начала поездки. Пожалуйста, напишите ее.
         
         state:Date
-        q:
         
         state:DontKnow
+        q:$dontKnow
+        script:
+            $session.startDate = "Не указано"
             
         state:CatchAll || noContext = true
             event: noMatch
+            
+            
+            
+            
+    state:AskDuration 
+        a:Также укажите, сколько дней будет длиться путешествие.
         
-
+        state:Number
+            
+            
+        state:DontKnow
+            q:$dontKnow
+            
+        state:CatchAll || noContext = true
+            event:noMatch 
+            
+    state:AskServices
+        a:Уточните, пожалуйста, какой пакет услуг вам интересен?
+        buttons: 
+            "Эконом"
+            "Стандарт"
+            "VIP"
+        
+        state:Package
+        
+        
+        state:WhatIsIncluded
+            
+        state:Price
+            
+        state:CatchAll ||noContext = true
+            
+            
+    state:AskName
+        
+        state:Name
+            
+        state:CatchAll || noContext = true
+            
+            
+    state:UnusualName
+        
+        
+    state:AskPhone 
+        
+        state:Phone
+            
+        state:CatchAll ||noContext = true
+            event: noMatch
+            
+            
+    state:AskComment
+        
+        
+        state:Comment
+            
+        state:Disagree
+            
+            
+    
+    state:Confirmation
+        
+        state:Agree
+            
+            state:Error
+                
+                
+        state:Disagree
+            
+            
+            
+        state:CatchAll || noContext = true
+            
+            
